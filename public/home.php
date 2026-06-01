@@ -1,19 +1,24 @@
 <?php
-
+// Inclui o arquivo responsável pela conexão com o banco de dados
     include("../infra/db/connect.php");
+// Verifica a existência de um usuário na sessão
     if(!isset($_SESSION["usuario"])){
+// Se não estiver logado, redireciona para a tela de login
         header("Location: ../index.php");
         exit();
     }
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $usuario = $_POST["usuario"];
         $senha = $_POST["senha"];
         $sql = "INSERT INTO users (username, password) VALUES ('$usuario','$senha')";
+ 
         if($conn -> query($sql) === TRUE){
             echo "<script>alert('Usuário Cadastrado com sucesso!')</script>";
         }else{
             echo "<script>alert('Erro Usuário Não Cadastrado!')</script>";
         }
+        // Exibe uma mensagem de sucesso ou erro
     }
 ?>
 
@@ -33,7 +38,7 @@
     </p>
 
     <h2>Cadastrar Novo Usuário</h2>
-    
+<!-- Função de cadastrar novo usuário     -->
     <form method="POST">
 
         <label for="usuario">Usuário:</label>

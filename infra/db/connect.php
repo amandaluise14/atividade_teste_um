@@ -15,4 +15,3 @@ $conn =new mysqli($host,$user,$pass,$db);
 // }
 ?>
 
-Está página serve para conectar as páginas 
