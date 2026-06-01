@@ -14,3 +14,5 @@ $conn =new mysqli($host,$user,$pass,$db);
 //     echo ("<p> BD: ok </p>");
 // }
 ?>
+
+Está página serve para conectar as páginas 
