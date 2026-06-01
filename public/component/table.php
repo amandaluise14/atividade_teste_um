@@ -1,3 +1,4 @@
+<!-- Linha horizontal para separar seções da página -->
 <hr>
 
 <h4> Usuários Cadastrados</h4>
@@ -12,11 +13,12 @@
 
     <?php
     
-
+// Consulta SQL para buscar os usuários cadastrados
     $sqlUsuarios = "SELECT * FROM users";
 
     $resultadoUsuarios = $conn -> query($sqlUsuarios);
 
+// Percorre cada registro retornado pela consulta
     while($linha = $resultadoUsuarios->fetch_assoc()){
         echo "<tr>
         
