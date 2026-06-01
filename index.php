@@ -1,29 +1,17 @@
-
 <?php
-session_start();
 
-$host = "localhost";
-$user = "root";
-$pass = "root";
-$db = "sistema_simples1";
-$conn =new mysqli($host,$user,$pass,$db);
-
-if($conn -> connect_error){
-    die("Erro na conexão");
-}else{
-    echo ("<p> BD: ok </p>");
-}
+include("infra/db/connect.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
  $usuario = $_POST["usuario"];
  $senha = $_POST["senha"];
 
- $sql = "SELECT * FROM usuario 
- WHERE usuario = '$usuario'
- AND senha = '$senha'";
+ $sql = "SELECT * FROM users 
+ WHERE username = '$usuario'
+ AND password = '$senha'";
 
- $resultado = $conn -> query($sql);
+$resultado = $conn -> query($sql);
 
 if($resultado -> num_rows > 0){
     $_SESSION["usuario"] = $usuario;
@@ -37,10 +25,6 @@ if($resultado -> num_rows > 0){
 }
 
 ?>
-
-
-
-
 
 <html lang="en">
 <head>
@@ -65,11 +49,5 @@ if($resultado -> num_rows > 0){
 
     </form>
 
-    <?php
-
-    if(isset($erro)){
-        echo $erro;
-    }
-    ?>
 </body>
 </html>

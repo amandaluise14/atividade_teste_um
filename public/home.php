@@ -1,12 +1,20 @@
 <?php
 
-session_start();
-
-if(!isset($_SESSION["usuario"])){
-    header("Location: ../index.php");
-    exit();
-}
-
+    include("../infra/db/connect.php");
+    if(!isset($_SESSION["usuario"])){
+        header("Location: ../index.php");
+        exit();
+    }
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $usuario = $_POST["usuario"];
+        $senha = $_POST["senha"];
+        $sql = "INSERT INTO users (username, password) VALUES ('$usuario','$senha')";
+        if($conn -> query($sql) === TRUE){
+            echo "<script>alert('Usuário Cadastrado com sucesso!')</script>";
+        }else{
+            echo "<script>alert('Erro Usuário Não Cadastrado!')</script>";
+        }
+    }
 ?>
 
 <html lang="en">
@@ -16,10 +24,35 @@ if(!isset($_SESSION["usuario"])){
     <title>Home</title>
 </head>
 <body>
-<h2>Bem-vindo!</h2>
-<p>Usuário logado:
-    <?php echo $_SESSION["usuario"];?>
-</p>
+    <?php
+        include("../public/component/navbar.php");
+    ?>
+    <h2>Bem-vindo!</h2>
+    <p>Usuário logado:
+        <?php echo $_SESSION["usuario"];?>
+    </p>
+
+    <h2>Cadastrar Novo Usuário</h2>
+    
+    <form method="POST">
+
+        <label for="usuario">Usuário:</label>
+        <input type="text" name="usuario">
+        <br>
+        <br>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha">
+        <br>
+        <br>
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <?php
+    
+    include("../public/component/table.php");
+    ?>
+
 <a href="logout.php">Sair</a>
 </body>
 </html>
