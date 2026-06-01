@@ -2,8 +2,11 @@
 
 session_start();
 
+// Define o endereço do servidor do banco de dados
 $host = "localhost";
+// Define o usuário utilizado para acessar o banco de dados
 $user = "root";
+// Define a senha do usuário do banco de dados
 $pass = "root";
 $db = "sistema_simples";
 $conn =new mysqli($host,$user,$pass,$db);
@@ -14,4 +17,5 @@ $conn =new mysqli($host,$user,$pass,$db);
 //     echo ("<p> BD: ok </p>");
 // }
 ?>
+<!-- Este arquivo serve para conexão com o banco de dados -->
 
