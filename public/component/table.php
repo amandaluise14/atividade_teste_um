@@ -9,6 +9,7 @@
         <th>ID</th>
         <th>Usuário</th>
         <th>Senha</th>
+        <th>Ações</th>
     </tr>
 
     <?php
@@ -25,7 +26,12 @@
             <td>" . $linha["id"] . "</td>
             <td>" . $linha["username"] . "</td>
             <td>" . $linha["password"] . "</td>
-        
+            <td>
+            <button href='delet.php?id=" . $linha["id"] . "'
+            onclick='return confirm(\"Deseja realmente excluir este usuário?\")'>
+            Excluir
+            </button>
+            </td>
         </tr>";
     }
     
