@@ -35,3 +35,25 @@ Além disso, os usuários cadastrados podem ser visualizados em uma tabela, cuja
 * Controle de acesso por meio de autenticação de usuários.
 * Organização básica de arquivos em projetos web.
 * Importância da segurança em aplicações, como o uso de senhas criptografadas e consultas preparadas (Prepared Statements). 
+
+# Funcionalidade de Exclusão de Usuários (Não Concluída)
+
+A funcionalidade de exclusão de usuários não foi finalizada no decorrer do desenvolvimento do projeto. Foi feito apenas a primeira parte da sua implementação.
+
+### Como a Funcionalidade Deveria ser Implementada
+
+Na página onde os usuários são listados, cada registro deveria possuir um botão de exclusão. Ao selecionar essa opção, o sistema enviaria o Id do usuário para um arquivo PHP encarregado pelo processamento de exclusão.
+
+### Lógica Necessária
+
+* Identificar o usuário selecionado pelo seu ID
+* Enviar o ID para o arquivo encarregado pela exclusão
+* Verificar a existencia do usuário no banco de dados.
+* Executar o comando SQL para remover o registro.
+* Atualizar a listagem após exclusão.
+* Exibir mensagem informando o sucesso ou falha do procedimento.
+
+### Arquivos que precisam ser alterados:
+
+* home.php - adicionar botão de excluir na tabela de usuários.
+* delete.php - processamento da exclusão no banco de dados.
